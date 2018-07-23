@@ -1,0 +1,46 @@
+** Not intended for beginners. This will have notes that are helpful, or easily forgotten **
+1. Big-O (common)
+2. Arrays
+3. Sorting Algorithms
+    -Bubble Sort
+[BONUS]
+
+
+[1]
+BIG-O
+|---------------------------------- |
+| O(1)        Constant        Best  |
+| O(logn)     Logarithmic           |
+| O(n)        Linear                |
+| O(nlogn)    n log-star n          |
+| O(n^2)      Quadratic       Worst |
+|-----------------------------------|
+
+
+** I will not make notes on the obvious like arrays starting at index 0 etc.
+** Only interesting or useful notes will be written.
+
+[2]
+Arrays:
+-----------------------------------------
+different ways to print arrays.
+1. for(int i = 0; i< arr.length; i++) 2. enhanced for(int x: arr){...}
+    { .... }
+
+x + i * y (to get address) x= memory location, i is index, y is size (4 bytes) etc.
+[3]
+Sort:
+types-- stable= means that the ordering remains the same with sorting the same numbers,
+        unstable= means that the order isn't guarenteed with same values. 1 2 3b 3a 4 5 etc.
+        bubble = stable; selection = unstable;
+
+[BONUS]
+--------
+{ Breaking out of a for loop with 'break;'}
+
+for(i..){
+if(condition{
+  break;
+ }
+}
+
