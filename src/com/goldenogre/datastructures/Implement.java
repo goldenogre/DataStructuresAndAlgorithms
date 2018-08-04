@@ -11,15 +11,23 @@ public class Implement {
         BubbleSort bubbleSort = new BubbleSort();
         SelectionSort selectionSort = new SelectionSort();
         InsertionSort insertionSort = new InsertionSort();
-        int[] intArray = {5,1,4,3,1,5,1};
 
-//        bubbleSort.sort(intArray); // calls bubble sort class
-//        bubbleSort.optimizedSort(intArray); // optimized version
-//        selectionSort.sort(intArray);
+        BinarySearch binarySearch = new BinarySearch();
+
+        int[] intArray = {5,1,4,3,1,5,1};
+        int find = 2; // change value as needed
         insertionSort.sort(intArray);
+        System.out.println("Array sorted");
+        System.out.println(find + " results: " + binarySearch.search(intArray,0,intArray.length-1,find));
+//       bubbleSort.sort(intArray); // calls bubble sort class
+//       bubbleSort.optimizedSort(intArray); // optimized version
+//       selectionSort.sort(intArray);
+//       insertionSort.sort(intArray);
+
 
         // Should be sorted
         printList(intArray);
+
 
     }
     public static void printList(int[]e){
@@ -27,7 +35,4 @@ public class Implement {
            System.out.print(x+ " ");
         }
     }
-
-
-
 }
