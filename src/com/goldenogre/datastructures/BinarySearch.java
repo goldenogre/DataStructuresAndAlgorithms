@@ -1,7 +1,17 @@
 package com.goldenogre.datastructures;
 
 public class BinarySearch {
-    public boolean search(int[]arr, int low, int high, int key){
+
+    /**
+     * Recursive binary search for integers.
+     * Array must be sorted prior to use.
+     * @param arr array to search
+     * @param low start of index to search
+     * @param high last index reference
+     * @param key integer to search
+     * @return true if found, false if not found.
+     */
+    public boolean recursiveSearch(int[]arr, int low, int high, int key){
 
 
         int middle = (low + high)/ 2;
@@ -11,9 +21,36 @@ public class BinarySearch {
         if (key == arr[middle]) {
             return true;
         } else if(key < arr[middle]){
-            return search(arr,low,middle-1,key);
+            return recursiveSearch(arr,low,middle-1,key);
         } else {
-            return search(arr,middle+1,high,key);
+            return recursiveSearch(arr,middle+1,high,key);
         }
+    }
+    /**
+     * Iterative binary search for integers.
+     * Array must be sorted prior to use.
+     * @param arr array to search
+     * @param low start of index to search
+     * @param high last index reference
+     * @param key integer to search
+     * @return true if found, false if not found.
+     */
+    public boolean iterativeSearch(int[]arr, int low, int high, int key){
+
+        while(low <= high){
+            int middle = (low + high)/2;
+            if (key < arr[middle]) {
+                high = middle -1;
+            }
+            if (key > arr[middle]) {
+                low = middle +1;
+            }
+            if (key == arr[middle]){
+                return true;
+            }
+
+        }
+        return false;
+
     }
 }
