@@ -1,5 +1,9 @@
 package com.goldenogre.datastructures;
 
+/**
+ * BinarySearch has a recursive and an iterative method. Recursive uses a stack, so large arrays
+ * can result in a stack overflow. Code looks nicer, but iterative is safer overall.
+ */
 public class BinarySearch {
 
     /**

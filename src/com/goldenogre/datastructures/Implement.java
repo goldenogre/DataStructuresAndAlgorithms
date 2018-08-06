@@ -12,13 +12,14 @@ public class Implement {
     private static BubbleSort bubbleSort;
     private static SelectionSort selectionSort;
     private static InsertionSort insertionSort;
+    private static ShellSort shellSort;
     // search algorithms
     private static BinarySearch binarySearch;
 
     public static void main(String[]args){
         Scanner input = new Scanner(System.in);
 
-        int[] intArray = {51,12,41,3,18,22,8}; //
+        int[] intArray = {51,12,41,3,18,22,8}; // Feel free to edit array with more or less integers.
 
         System.out.print("Sort and Search Algorithms\nNo error handling, so use correct values to" +
                 " evaluate algorithm test.\nUsing test array: ");
@@ -27,7 +28,7 @@ public class Implement {
         System.out.println("\n----------------------------------------");
 
         System.out.print("\n0-Bubble Sort\n1-Insertion Sort\n" +
-                "2-Selection Sort\n3-Binary Search\n\nChoose an algorithm to test:[0-3]");
+                "2-Selection Sort\n3-Binary Search\n4-Shell Sort\n\nChoose an algorithm to test:[0-4]");
         int choose = input.nextInt();
         switch(choose){
             case 0:
@@ -72,8 +73,18 @@ public class Implement {
                     System.out.println(find + " recursive search results: " + binarySearch.recursiveSearch(intArray,0,intArray.length-1,find));
                 }
                 break;
+            case 4:
+                shellSort = new ShellSort();
+                System.out.println("You chose shell sort");
+                shellSort.sort(intArray);
+                System.out.println("Sorted via shell sort.");
+
+                break;
+
+
             default:
                 System.out.println("You didn't choose a valid entry.");
+
                 break;
         }
 
