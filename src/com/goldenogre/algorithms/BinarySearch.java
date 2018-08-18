@@ -1,4 +1,4 @@
-package com.goldenogre.datastructures;
+package com.goldenogre.algorithms;
 
 /**
  * BinarySearch has a recursive and an iterative method. Recursive uses a stack, so large arrays
@@ -16,7 +16,6 @@ public class BinarySearch {
      * @return true if found, false if not found.
      */
     public boolean recursiveSearch(int[]arr, int low, int high, int key){
-
 
         int middle = (low + high)/ 2;
 
@@ -55,6 +54,5 @@ public class BinarySearch {
 
         }
         return false;
-
     }
 }

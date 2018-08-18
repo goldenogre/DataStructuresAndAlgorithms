@@ -1,4 +1,4 @@
-package com.goldenogre.datastructures;
+package com.goldenogre.algorithms;
 /**
  * Knuth Sequence (3^k-1)/2 where k = array length to determine gap.
  * Simple version. Gap will be array.length/2
@@ -22,8 +22,6 @@ public class ShellSort {
                 }
                 arr[j]=newElement;
             }
-
-
         }
     }
 }

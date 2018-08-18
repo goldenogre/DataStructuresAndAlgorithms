@@ -1,8 +1,8 @@
-package com.goldenogre.datastructures;
+package com.goldenogre.algorithms;
 
 /**
  * Bubble Sort.
- * inplace algorithm, o(n^2), poor at higher numbers.
+ * Inplace algorithm, o(n^2), poor at higher numbers.
  * Can create a swap method. (intArray
  */
 public class BubbleSort {
@@ -20,7 +20,6 @@ public class BubbleSort {
             }
         }
     }
-
     /**
      * Optimized: lastUnsortedIndex decrement prevents the sort to enter sorted indexes.
      * @param arr int arr
@@ -34,7 +33,6 @@ public class BubbleSort {
               }
         }
     }
-
     /**
      * Swaps values if i> i+1
      * @param arr integer array
@@ -48,8 +46,5 @@ public class BubbleSort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-
     }
-
-
 }

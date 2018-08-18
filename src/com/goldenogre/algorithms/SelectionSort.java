@@ -1,4 +1,4 @@
-package com.goldenogre.datastructures;
+package com.goldenogre.algorithms;
 
 /**
  * Selection sort, first index is sorted. then each element is compared. The value of largest index is
@@ -19,7 +19,6 @@ public class SelectionSort {
             }
             swap(arr, largest, lastUnsortedIndex);
         }
-
     }
     public static void swap(int[]arr, int i, int j){
         if(i == j){
@@ -28,6 +27,5 @@ public class SelectionSort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-
     }
 }
