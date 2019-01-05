@@ -6,12 +6,131 @@ import java.util.*;
 public class Main {
 
     public static void main (String[]args){
-        int[] test1 = {1,2,3};
-        int[] test2 = {1,2,5,6,7,10,12,19,21,25,27,30,41};
+        int[] sort = {5,12,55,3,5,16,52,33,11};
+        int[] sort2 = {44,2,5,6,5,10,32,9,21,15,27,30,21};
         int[] test3 = {1,2,3};
         int[] test4 = {};
-        System.out.println("true: " + subStringSearch("fbanzlebangdifbanf", "ban"));
+        printArray(sort2);
+        quickSort(sort2,0,sort2.length);
+        printArray(sort2);
+    }
+    // Intermediate Sorting Algorithms merge quick radix
+    public static void radixSort(int[]arr){
 
+    }
+    public static void quickSort(int[]arr, int start, int end){
+        // recursive:
+        if(end-start < 2){
+            return;
+        }
+        int pivotIndex = partition(arr,start,end);
+        quickSort(arr,start,pivotIndex); // left subarray
+        quickSort(arr,pivotIndex+1,end); // right subarray
+
+
+    }
+    public static int partition(int[]arr, int start, int end ){
+        // this is using first element as pivot
+        int pivot = arr[start];
+        int i = start;
+        int j = end;
+        while(i<j){
+            // empty loop body
+            while(i<j && arr[--j] >= pivot);
+            if(i<j){
+                arr[i]=arr[j];
+            }
+            //empty loop again
+            while (i < j && arr[++i] <= pivot);
+            if(i<j){
+                arr[j]=arr[i];
+            }
+        }
+        arr[j]= pivot;
+        return j;
+    }
+    public static void mergeSort(int[]input, int start, int end){
+        // recursive: elementary sorts O(1), while mergeSort is O(n). takes some space up.
+
+        if(end-start < 2){ // means 1 element array.
+            return;
+        }
+
+        // partition array with start and end
+        int mid = (start + end) / 2; // end is length
+        mergeSort(input, start, mid);
+        mergeSort(input, mid, end);
+        merge(input, start, mid, end);
+
+    }
+    public static void merge(int[]input, int start, int mid, int end){
+        // 1st optimization
+        if(input[mid-1] <= input[mid]){ // checks if array is sorted
+            return;
+        }
+        int i = start;
+        int j = mid;
+        int tempIndex = 0; // keeps track of temp array
+        int [] temp = new int[end-start];
+
+        // compare
+        while(i < mid && j < end) {
+            temp[tempIndex++] = input[i] <= input[j] ? input[i++] : input[j++]; // = for stableness the ++ happens after in all cases.
+        }
+        // 2nd optimization handling elements remaining. if left, copy, right means no.
+        System.arraycopy(input, i, input, start + tempIndex, mid - i); //
+        System.arraycopy(temp, 0, input, start, tempIndex);
+
+    }
+    // Elementary Sorting Algorithmsvisualgo.net (bubble,selection,insertion)
+    public static void insertionSort(int[]arr){
+        // O(n^2) best case O(n)
+        int j;
+        for(int i = 1; i<arr.length;i++){
+            int value = arr[i];
+            for(j = i-1; j >=0 && arr[j]> value; j--){
+                arr[j+1]= arr[j];
+            }
+            arr[j+1] = value;
+        }
+    }
+    public static void selectionSort(int[]arr){
+        // O(n^2)
+        for(int i = 0; i < arr.length;i++) {
+            int lowest = i;
+            for(int j = i + 1; j < arr.length;j++){
+                if(arr[j] < arr[lowest]){
+                    lowest = j;
+                }
+
+            }
+            // only runs if i is changed.
+            if(i != lowest){
+                int temp = arr[i];
+                arr[i]= arr[lowest];
+                arr[lowest]= temp;
+            }
+
+        }
+    }
+    public static void bubbleSort(int[]arr){
+
+        // optimized with noSwap. O(N) best case
+       for(int i = arr.length; i > 0; i--){
+           boolean noSwaps = true;
+           for(int j = 0; j < i - 1; j++){
+               System.out.println( arr[j] + " "+ arr[j+1]);
+               if(arr[j]>arr[j+1]){
+                   int temp = arr[j];
+                   arr[j]= arr[j+1];
+                   arr[j+1]= temp;
+                   noSwaps= false;
+               }
+           }
+           if(noSwaps)
+               break;
+        }
+       printArray(arr);
     }
     // Search Functions
     public static int subStringSearch(String complete, String pattern){
@@ -276,6 +395,30 @@ public class Main {
         System.out.println("Lookup. is there a be?");
 
         return stringA.equals(stringB);
+    }
+    public static boolean anagram1(String a, String b) {
+        // Use only 1 map and remove 1 from value.
+        Map<Character, Integer> map = new HashMap<>();
+        if (a.length() != b.length()) {
+            return false;
+        }
+        for (int i = 0; i < a.length(); i++) {
+            char key = a.charAt(i);
+            if (map.containsKey(key)) {
+                map.put(key, map.get(key) + 1);
+            } else {
+                map.put(key, 1);
+            }
+        }
+        for(int i = 0; i < b.length(); i++){
+            char key = b.charAt(i);
+            if(map.get(key)>0){
+                map.put(key,map.get(key)-1);
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
     public static void printArray(int[] a ){
 
